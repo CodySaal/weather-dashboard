@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="assets/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="row text-white text-center">Weather Dashboard</header>
+
+    <main class="row">
+        <section class="col-lg-2 col-sm-3">
+            <form>
+                <div class="mb-3">
+                  <label for="citySearch" class="form-label">Search for a City:</label>
+                  <input type="search" class="form-control" id="citySearch" aria-describedby="Choose a City">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <div id="searchHistory">
+                <!--Past search results go here-->
+            </div>
+        </section>
+        <div class="container col-lg-10 col-sm-9">
+            <section class="row" id="currentWeather">
+                <h2 id="cityDate"></h2>
+                <!--City date(m/dd/yyyy) icon-->
+                <ul id="conditions"></ul>
+                <!--Temp Wind Humidity-->
+            </section>
+            <section class="row" id="futureWeather">
+                <h3>5-Day Forecast:</h2>
+                <!--Insert 5-day forecast here-->
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+
+  </body>
+</html>
