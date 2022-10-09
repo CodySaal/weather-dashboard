@@ -50,18 +50,18 @@ function getCurrentWeather(cityLat, cityLon){
             var iconAlt = currentWeather.weather[0].description;
             console.log(icon)
             var createIconEl = document.createElement("img");
-            var currentTemp = currentWeather.main.temp
-            var createCurrentTempEl = document.createElement("li")
-            createCurrentTempEl.textContent = "Temp: " + currentTemp + " °F"
-            conditionsList.appendChild(createCurrentTempEl)
-            var currentWind = currentWeather.wind.speed
-            var createCurrentWindEl = document.createElement("li")
-            createCurrentWindEl.textContent = "Wind: " + currentWind + " MPH"
-            conditionsList.appendChild(createCurrentWindEl)
-            var currentHumidity = currentWeather.main.humidity
-            var createCurrentHumidityEl = document.createElement("li")
-            createCurrentHumidityEl.textContent = "Humidity: " + currentHumidity + " %"
-            conditionsList.appendChild(createCurrentHumidityEl)
+            var currentTemp = currentWeather.main.temp;
+            var createCurrentTempEl = document.createElement("li");
+            createCurrentTempEl.textContent = "Temp: " + currentTemp + " °F";
+            conditionsList.appendChild(createCurrentTempEl);
+            var currentWind = currentWeather.wind.speed;
+            var createCurrentWindEl = document.createElement("li");
+            createCurrentWindEl.textContent = "Wind: " + currentWind + " MPH";
+            conditionsList.appendChild(createCurrentWindEl);
+            var currentHumidity = currentWeather.main.humidity;
+            var createCurrentHumidityEl = document.createElement("li");
+            createCurrentHumidityEl.textContent = "Humidity: " + currentHumidity + " %";
+            conditionsList.appendChild(createCurrentHumidityEl);
             createIconEl.setAttribute("src", icon);
             createIconEl.setAttribute("alt", iconAlt);
             cityInfoEl.appendChild(createIconEl);
@@ -71,7 +71,7 @@ function getCurrentWeather(cityLat, cityLon){
 
 function getFutureWeather(cityLat, cityLon){
     // get five day forecast
-    fetch("api.openweathermap.org/data/2.5/forecast/daily?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&cnt=6&appid=" + key)
+    fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=" + key)
         .then(function(response){
             return response.json();
         })
