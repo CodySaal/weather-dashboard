@@ -8,8 +8,8 @@ var futureForcastEl = document.getElementById("futureWeather")
 
 var key = "f6b1dc9de10dbbcfdf4c08cf6f933425";
 var pastSearches = [];
-var cityLat 
-var cityLon
+// var cityLat 
+// var cityLon
 
 // Functions
 
@@ -33,15 +33,15 @@ function convertName(cityName){
 }
 function getCurrentWeather(cityLat, cityLon){
     // get one day forecast
-    fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + key)
+    fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=" + key)
         .then(function(response){
             return response.json();
         })
         .then(function(currentWeather){
             console.log(currentWeather)
+            console.log(currentWeather.main.temp)
         })
 }
-console.log(cityLat)
 
 // Main function
 function handleSearch(event){
