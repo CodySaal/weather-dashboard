@@ -5,9 +5,12 @@ var searchHistoryEl = document.getElementById("searchHistory")
 var cityInfoEl = document.getElementById("cityDate");
 var conditionsList = document.getElementById("conditions");
 var futureForcastEl = document.getElementById("futureWeather")
+var currentIcon = document.getElementById("icon")
 
 var key = "f6b1dc9de10dbbcfdf4c08cf6f933425";
 var pastSearches = [];
+var date = new Date().toLocaleDateString();
+console.log(date);
 // var cityLat 
 // var cityLon
 
@@ -40,6 +43,23 @@ function getCurrentWeather(cityLat, cityLon){
         .then(function(currentWeather){
             console.log(currentWeather)
             console.log(currentWeather.main.temp)
+            getFutureWeather(cityLat, cityLon)
+            // TEST
+            var icon = "http://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png"
+            console.log(icon)
+            currentIcon.setAttribute("src", icon)
+        // cityInfoEl.innerText = cityName + " (" + date + ") " icon
+        })
+}
+
+function getFutureWeather(cityLat, cityLon){
+    // get five day forecast
+    fetch("api.openweathermap.org/data/2.5/forecast/daily?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&cnt=6&appid=" + key)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(futureWeather){
+            console.log(futureWeather)
         })
 }
 
@@ -53,5 +73,4 @@ function handleSearch(event){
     // current weather api function
     // 5 day forecast function
 }
-
 form.addEventListener("submit", handleSearch)
