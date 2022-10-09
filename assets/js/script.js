@@ -46,8 +46,10 @@ function getCurrentWeather(cityLat, cityLon){
             getFutureWeather(cityLat, cityLon)
             // TEST
             var icon = "http://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png"
+            var iconAlt = currentWeather.weather[0].description
             console.log(icon)
             currentIcon.setAttribute("src", icon)
+            currentIcon.setAttribute("alt", iconAlt)
         // cityInfoEl.innerText = cityName + " (" + date + ") " icon
         })
 }
