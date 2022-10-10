@@ -4,8 +4,9 @@ var searchBtn = document.getElementById("searchBtn");
 var searchHistoryEl = document.getElementById("searchHistory")
 var cityInfoEl = document.getElementById("cityDate");
 var conditionsList = document.getElementById("conditions");
-var futureForcastEl = document.getElementById("futureWeather")
+var futureForcastEl = document.getElementById("fiveDay")
 var currentIcon = document.getElementById("icon")
+
 
 var key = "f6b1dc9de10dbbcfdf4c08cf6f933425";
 var pastSearches = [];
@@ -15,6 +16,7 @@ console.log(date);
 // var cityLon
 
 // Functions
+
 
 function convertName(cityName){
     // convert city name to lat and lon
@@ -77,6 +79,36 @@ function getFutureWeather(cityLat, cityLon){
         })
         .then(function(futureWeather){
             console.log(futureWeather)
+            console.log(futureWeather.list[0].dt_txt)
+            for (var i = 0; i < futureWeather.list.length; i++) {
+                if (futureWeather.list[i].dt_txt.includes("12:00:00")){
+                    console.log("Working")
+                    var forecastCard = document.createElement("div");
+                    var cardDate = document.createElement("h3")
+                    var forecastIcon = document.createElement("img")
+                    var forecastConditions = document.createElement("ul")
+                    var tempItem = document.createElement("li")
+                    var windItem = document.createElement("li")
+                    var humidityItem = document.createElement("li")
+
+                    var futureIcon = "http://openweathermap.org/img/wn/" + futureWeather.list[i].weather[0].icon + "@2x.png";
+                    var futureIconAlt = futureWeather.list[i].weather[0].description;
+
+                    tempItem.textContent = "Temp: " + futureWeather.list[i].main.temp + " °F"
+                    windItem.textContent = "Wind: " + futureWeather.list[i].wind.speed + " MPH"
+                    humidityItem.textContent = "Humidity: " + futureWeather.list[i].main.humidity + " %"
+                    forecastCard.setAttribute("class", "col text-white bg-secondary")
+                    forecastIcon.setAttribute("src", futureIcon);
+                    forecastIcon.setAttribute("alt", futureIconAlt);
+                    futureForcastEl.appendChild(forecastCard)
+                    forecastCard.appendChild(forecastIcon);
+                    forecastCard.appendChild(forecastConditions);
+                    forecastConditions.appendChild(tempItem)
+                    forecastConditions.appendChild(windItem)
+                    forecastConditions.appendChild(humidityItem)
+
+                }
+            } 
         })
 }
 
