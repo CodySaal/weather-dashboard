@@ -17,6 +17,12 @@ console.log(date);
 
 // Functions
 
+function storeSearch(cityName){
+    var pastSearchBtn = document.createElement("button")
+    pastSearchBtn.setAttribute("class", "btn btn-secondary")
+    pastSearchBtn.innerText = cityName
+    searchHistoryEl.appendChild(pastSearchBtn)
+}
 
 function convertName(cityName){
     // convert city name to lat and lon
@@ -119,6 +125,7 @@ function handleSearch(event){
     var cityName = searchInput.value
     // geoAPI function
     convertName(cityName);
+    storeSearch(cityName);
     // current weather api function
     // 5 day forecast function
 }
