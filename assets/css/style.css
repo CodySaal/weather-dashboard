@@ -2,3 +2,7 @@ header {
     background: rgb(0,77,154);
     background: linear-gradient(90deg, rgba(0,77,154,1) 0%, rgba(0,0,205,1) 100%);
 }
+
+li {
+    list-style-type: none;
+}
