@@ -6,3 +6,7 @@ header {
 li {
     list-style-type: none;
 }
+
+#searchHistory {
+    margin-top: 10px;
+}
