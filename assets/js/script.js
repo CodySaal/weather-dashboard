@@ -46,6 +46,7 @@ function convertName(cityName){
 }
 function getCurrentWeather(cityLat, cityLon){
     // get one day forecast
+    conditionsList.innerHTML = "";
     fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=" + key)
         .then(function(response){
             return response.json();
@@ -79,6 +80,7 @@ function getCurrentWeather(cityLat, cityLon){
 
 function getFutureWeather(cityLat, cityLon){
     // get five day forecast
+    futureForcastEl.innerHTML = "";
     fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=" + key)
         .then(function(response){
             return response.json();
