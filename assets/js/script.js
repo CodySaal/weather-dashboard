@@ -9,7 +9,7 @@ var currentIcon = document.getElementById("icon")
 
 
 var key = "f6b1dc9de10dbbcfdf4c08cf6f933425";
-var pastSearches = [];
+var pastSearches =  JSON.parse(localStorage.getItem("pastSearch"));
 var date = new Date().toLocaleDateString();
 console.log(date);
 // var cityLat 
@@ -26,6 +26,14 @@ function storeSearch(cityName){
        cityName = pastSearchBtn.innerText
        convertName(cityName); 
     })
+}
+
+function setStorage(){
+    localStorage.setItem("pastSearch", JSON.stringify(pastSearches))
+}
+
+function getStorage(){
+    var loadedSearches = JSON.parse(localStorage.getItem("pastSearch"));
 }
 
 function convertName(cityName){
@@ -132,12 +140,19 @@ function handleSearch(event){
     event.preventDefault();
     // get name of city
     var cityName = searchInput.value
+    if (!pastSearches.includes(cityName)){
+        pastSearches.push(cityName)
+    }
+    console.log(pastSearches);
     searchInput.value = ""
     // geoAPI function
     convertName(cityName);
     storeSearch(cityName);
+    setStorage();
     // current weather api function
     // 5 day forecast function
 }
 
 form.addEventListener("submit", handleSearch)
+
+window.onload = getStorage;
