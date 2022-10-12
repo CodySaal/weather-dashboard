@@ -22,6 +22,10 @@ function storeSearch(cityName){
     pastSearchBtn.setAttribute("class", "btn btn-secondary")
     pastSearchBtn.innerText = cityName
     searchHistoryEl.appendChild(pastSearchBtn)
+    pastSearchBtn.addEventListener("click", function(){
+       cityName = pastSearchBtn.innerText
+       convertName(cityName); 
+    })
 }
 
 function convertName(cityName){
@@ -131,4 +135,5 @@ function handleSearch(event){
     // current weather api function
     // 5 day forecast function
 }
+
 form.addEventListener("submit", handleSearch)
