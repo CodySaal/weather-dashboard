@@ -45,6 +45,7 @@ function convertName(cityName){
     fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + ",US&limit=1&appid=" + key)
         .then(function(response){
             return response.json();
+            
         })
         .then(function(coordinates){
             console.log(coordinates);
