@@ -84,6 +84,7 @@ function getCurrentWeather(cityLat, cityLon){
 
 function getFutureWeather(cityLat, cityLon){
     // get five day forecast
+    var increaseDay = 0
     futureForcastEl.innerHTML = "";
     fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=" + key)
         .then(function(response){
@@ -94,6 +95,7 @@ function getFutureWeather(cityLat, cityLon){
             console.log(futureWeather.list[0].dt_txt)
             for (var i = 0; i < futureWeather.list.length; i++) {
                 if (futureWeather.list[i].dt_txt.includes("12:00:00")){
+                    increaseDay++
                     console.log("Working")
                     var forecastCard = document.createElement("div");
                     var cardDate = document.createElement("h3")
@@ -105,7 +107,7 @@ function getFutureWeather(cityLat, cityLon){
 
                     var futureIcon = "http://openweathermap.org/img/wn/" + futureWeather.list[i].weather[0].icon + "@2x.png";
                     var futureIconAlt = futureWeather.list[i].weather[0].description;
-
+                    cardDate.textContent = moment().add(increaseDay, "days").format("M/DD/YYYY")
                     tempItem.textContent = "Temp: " + futureWeather.list[i].main.temp + " °F"
                     windItem.textContent = "Wind: " + futureWeather.list[i].wind.speed + " MPH"
                     humidityItem.textContent = "Humidity: " + futureWeather.list[i].main.humidity + " %"
@@ -113,6 +115,7 @@ function getFutureWeather(cityLat, cityLon){
                     forecastIcon.setAttribute("src", futureIcon);
                     forecastIcon.setAttribute("alt", futureIconAlt);
                     futureForcastEl.appendChild(forecastCard)
+                    forecastCard.appendChild(cardDate)
                     forecastCard.appendChild(forecastIcon);
                     forecastCard.appendChild(forecastConditions);
                     forecastConditions.appendChild(tempItem)
@@ -129,6 +132,7 @@ function handleSearch(event){
     event.preventDefault();
     // get name of city
     var cityName = searchInput.value
+    searchInput.value = ""
     // geoAPI function
     convertName(cityName);
     storeSearch(cityName);
