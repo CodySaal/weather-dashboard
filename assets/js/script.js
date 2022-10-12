@@ -9,7 +9,8 @@ var currentIcon = document.getElementById("icon")
 
 
 var key = "f6b1dc9de10dbbcfdf4c08cf6f933425";
-var pastSearches =  JSON.parse(localStorage.getItem("pastSearch"));
+// Allows pastSearches to be either saved items or an empty array if new to site.
+var pastSearches =  JSON.parse(localStorage.getItem("pastSearch")) || [];
 var date = new Date().toLocaleDateString();
 console.log(date);
 // var cityLat 
@@ -34,6 +35,9 @@ function setStorage(){
 
 function getStorage(){
     var loadedSearches = JSON.parse(localStorage.getItem("pastSearch"));
+    if (loadedSearches){
+        loadedSearches.forEach(storeSearch)
+    }
 }
 
 function convertName(cityName){
