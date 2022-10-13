@@ -17,13 +17,13 @@ N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To use, start by entering the city you are traveling to in the Search box then hit search. Your 1 day and 5 day forecast will show to the right and your search will be stored in past searches down below. These past searches are clickable so you can quickly go back to a previous cities weather.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Weather Dashboard Screenshot](assets/images/weather-dashboard-screenshot.png)
+
+Live site: https://codysaal.github.io/weather-dashboard/
+
 
 ## Credits
 
