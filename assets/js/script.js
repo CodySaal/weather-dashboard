@@ -41,7 +41,7 @@ function getStorage(){
 
 // convert city name to lat and lon
 function convertName(cityName){
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + ",US&limit=1&appid=" + key)
+    fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + ",US&limit=1&appid=" + key)
         .then(function(response){
             return response.json();
             
@@ -64,7 +64,7 @@ function getCurrentWeather(cityLat, cityLon){
             return response.json();
         })
         .then(function(currentWeather){
-            var icon = "http://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png";
+            var icon = "https://openweathermap.org/img/wn/" + currentWeather.weather[0].icon + "@2x.png";
             var iconAlt = currentWeather.weather[0].description;
             var createIconEl = document.createElement("img");
 
@@ -112,7 +112,7 @@ function getFutureWeather(cityLat, cityLon){
                     var windItem = document.createElement("li");
                     var humidityItem = document.createElement("li");
 
-                    var futureIcon = "http://openweathermap.org/img/wn/" + futureWeather.list[i].weather[0].icon + "@2x.png";
+                    var futureIcon = "https://openweathermap.org/img/wn/" + futureWeather.list[i].weather[0].icon + "@2x.png";
                     var futureIconAlt = futureWeather.list[i].weather[0].description;
 
                     cardDate.textContent = moment().add(increaseDay, "days").format("M/DD/YYYY");
